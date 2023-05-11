@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "head.html" %}
+    <style>
+        body {
+            background-image: url("./static/img/bg.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+             <ul class="messages">
+                {% for message in messages %}
+            <li class="{{ message[1] }}">{{ message[0] }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            <div class="wrap">
+				<div class="avatar text-center"> <!-- Added 'text-center' class -->
+					<img src="./static/img/sidirabg.png" class="mx-auto" class="mx-auto" style="max-width: 420px; max-height: 200px;"> <!-- Added 'mx-auto' class -->
+				</div>
+			</div>
+            <div class="login-panel panel panel-default">
+				<div class="panel-heading">Registrasi</div>
+				<div class="panel-body">
+                    <form action="{{ url_for('register') }}" method="POST">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Nama" id="nama" name="nama" type="nama" autofocus="">
+                        </div>
+                        <div class="form-group"></div>
+                            <input class="form-control" placeholder="username" id="user_id" name="username" type="username" autofocus="">
+                        <div>
+                        <div class="form-group"></div>
+                            <input class="form-control" placeholder="Email" id="email" name="email" type="email" autofocus="">
+                        <div>
+                        <div class="form-group"></div>
+                            <input class="form-control" placeholder="Password" id="password" name="password" type="password" autofocus="">
+                        <div>
+                        <div class="form-group"></div>
+                            <input class="form-control" placeholder="Retype Password" id="retype_password" name="retype_password" type="password" autofocus="">
+                        <div>
+                </div>          
+                <br><br>
+                <a href="{{ url_for('success') }}" class="btn btn-primary">Register</a></fieldset>
+            </form>
+        </div>
+    </div><!-- /.col-->
+</div><!-- /.row -->
+    {% include "scripts.html" %}
+</body>
+</html>
